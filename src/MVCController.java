@@ -15,6 +15,55 @@ public class MVCController {
         //Erzeugung des Datenmodells durch ein Objekt der Klasse MVCModel
         this.model = new MVCModel();
 
+        testeRezeptverwaltung();
+
     }
 
+    public void testeRezeptverwaltung() {
+
+        Zutat limette = new Zutat("Limette", 2.00);
+        Zutat zucker = new Zutat("Zucker", 0.25);
+        Zutat orange = new Zutat("Orange", 1.50);
+
+        Zutat[] zutatenCaipirinha = {limette, zucker};
+        Cocktail caipirinha = new Cocktail("Caipirinha", zutatenCaipirinha, false, false, 0, true);
+
+        Cocktail[] cocktails= model.rezeptverwaltung.getCocktailRezepte();
+        for (int i = 0; i < cocktails.length; i++){
+            if (cocktails[i]==null){
+                cocktails[i] = caipirinha;
+                break;
+            }
+        }
+        for (int i = 0; i < cocktails.length;i++){
+            if (cocktails[i]!=null) {
+                System.out.println(cocktails[i].getName());
+            }
+        }
+        model.rezeptverwaltung.setCocktailRezepte(cocktails);
+
+
+
+
+
+
+
+
+
+        Zutat zitrone = new Zutat("Zitrone", 1.00);
+        Zutat minze = new Zutat("Minze", 0.75);
+        Zutat wasser = new Zutat("Wasser", 0.10);
+        Zutat eis = new Zutat("Eis", 0.50);
+
+        Zutat[] zutatenOrangenlimo = {orange, minze, wasser, eis};
+        Limonade orangenlimo = new Limonade("Orangenlimo", zutatenOrangenlimo, false, true, "Orange", true);
+
+        Zutat[] zutatenZitronenlimo = {zitrone, minze, zucker, wasser, eis};
+        Limonade zitronenlimo = new Limonade("Zitronenlimo", zutatenZitronenlimo, false, false, "Zitrone", false);
+
+
+
+
+
+    }
 }
