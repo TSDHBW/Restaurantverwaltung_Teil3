@@ -32,6 +32,7 @@ public class MVCController {
         for (int i = 0; i < cocktails.length; i++){
             if (cocktails[i]==null){
                 cocktails[i] = caipirinha;
+                // Weitere Cocktailrezepte aufnehmen
                 break;
             }
         }
@@ -41,14 +42,6 @@ public class MVCController {
             }
         }
         model.rezeptverwaltung.setCocktailRezepte(cocktails);
-
-
-
-
-
-
-
-
 
         Zutat zitrone = new Zutat("Zitrone", 1.00);
         Zutat minze = new Zutat("Minze", 0.75);
@@ -60,10 +53,6 @@ public class MVCController {
 
         Zutat[] zutatenZitronenlimo = {zitrone, minze, zucker, wasser, eis};
         Limonade zitronenlimo = new Limonade("Zitronenlimo", zutatenZitronenlimo, false, false, "Zitrone", false);
-
-
-
-
 
     }
 }
