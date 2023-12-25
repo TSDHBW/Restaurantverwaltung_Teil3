@@ -15,11 +15,11 @@ public class MVCController {
         //Erzeugung des Datenmodells durch ein Objekt der Klasse MVCModel
         this.model = new MVCModel();
 
-        testeRezeptverwaltung();
+        legeRezeptan();
 
     }
 
-    public void testeRezeptverwaltung() {
+    public void legeRezeptan() {
 
         Zutat limette = new Zutat("Limette", 2.00);
         Zutat zucker = new Zutat("Zucker", 0.25);
@@ -28,22 +28,24 @@ public class MVCController {
         Zutat[] zutatenCaipirinha = {limette, zucker};
         Cocktail caipirinha = new Cocktail("Caipirinha", zutatenCaipirinha, false, false, 0, true);
 
+        //Cocktail-Array aus der Rezeptverwaltung holen
         Cocktail[] cocktails= model.rezeptverwaltung.getCocktailRezepte();
+        //Caipirinha-Cocktail in das Cocktail-Array aufnehmen
         for (int i = 0; i < cocktails.length; i++){
             if (cocktails[i]==null){
                 cocktails[i] = caipirinha;
-                // Weitere Cocktailrezepte aufnehmen
                 break;
             }
         }
+        //Ausgabe aller Cocktailnamen in dem Cocktail-Array
         for (int i = 0; i < cocktails.length;i++){
             if (cocktails[i]!=null) {
                 System.out.println(cocktails[i].getName());
             }
         }
+        //Cocktail-Array in die Rezeptverwaltung übernehmen
         model.rezeptverwaltung.setCocktailRezepte(cocktails);
 
-        Zutat zitrone = new Zutat("Zitrone", 1.00);
         Zutat minze = new Zutat("Minze", 0.75);
         Zutat wasser = new Zutat("Wasser", 0.10);
         Zutat eis = new Zutat("Eis", 0.50);
@@ -51,8 +53,24 @@ public class MVCController {
         Zutat[] zutatenOrangenlimo = {orange, minze, wasser, eis};
         Limonade orangenlimo = new Limonade("Orangenlimo", zutatenOrangenlimo, false, true, "Orange", true);
 
-        Zutat[] zutatenZitronenlimo = {zitrone, minze, zucker, wasser, eis};
-        Limonade zitronenlimo = new Limonade("Zitronenlimo", zutatenZitronenlimo, false, false, "Zitrone", false);
+        //Limonaden-Array aus der Rezeptverwaltung holen
+        Limonade[] limos= model.rezeptverwaltung.getLimonadeRezepte();
+        //Organenlimo in das Limonaden-Array aufnehmen
+        for (int i = 0; i < limos.length; i++){
+            if (limos[i]==null){
+                limos[i] = orangenlimo;
+                break;
+            }
+        }
+        //Ausgabe aller Limonadennamen in dem Cocktail-Array
+        for (int i = 0; i < limos.length;i++){
+            if (limos[i]!=null) {
+                System.out.println(limos[i].getName());
+            }
+        }
+        //Limonaden-Array in die Rezeptverwaltung übernehmen
+        model.rezeptverwaltung.setLimonadeRezepte(limos);
+
 
     }
 }
